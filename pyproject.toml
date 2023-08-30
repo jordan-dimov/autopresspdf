@@ -5,6 +5,9 @@ description = "Optimize, split, and auto-fix your PDFs effortlessly with AutoPre
 authors = ["Jordan Dimov <jdimov@a115.co.uk>"]
 license = "Creative Commons"
 readme = "README.md"
+packages = [
+  { include = "src", from = "." }
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"

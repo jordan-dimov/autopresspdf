@@ -31,11 +31,6 @@ autopresspdf autofix --input input.pdf --output-dir autofix/ --max-size 4000000
 pip install autopresspdf
 
 
-## Contribution
-
-Feel free to contribute to AutoPressPDF! Check out our CONTRIBUTING.md for guidelines.
-
-
 ## Dependencies
 
 ### GhostScript
