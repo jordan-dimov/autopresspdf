@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "autopresspdf"
+version = "0.1.0"
+description = "Optimize, split, and auto-fix your PDFs effortlessly with AutoPressPDF—the smart CLI tool for navigating size restrictions without sacrificing quality."
+authors = ["Jordan Dimov <jdimov@a115.co.uk>"]
+license = "Creative Commons"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+typer = "^0.9.0"
+
+[tool.poetry.group.dev.dependencies]
+ipdb = "^0.13.13"
+black = "^23.7.0"
+ruff = "^0.0.286"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
