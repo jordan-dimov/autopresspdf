@@ -3,6 +3,7 @@ from typing import List
 from pathlib import Path
 
 from src.data_types import PdfFile
+from src.utils import get_pdf_page_count
 
 
 def run_ghostscript(input_pdf: Path, output_pdf: Path) -> PdfFile:
@@ -25,8 +26,7 @@ def run_ghostscript(input_pdf: Path, output_pdf: Path) -> PdfFile:
 
     # Collect file information
     file_size = output_pdf.stat().st_size
-    # For now, we'll set the number of pages to a placeholder. Actual logic to count pages can be added later.
-    num_pages = 0
+    num_pages = get_pdf_page_count(output_pdf)
 
     return PdfFile(path=output_pdf, size=file_size, num_pages=num_pages)
 
