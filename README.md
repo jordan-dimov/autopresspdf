@@ -19,10 +19,10 @@ AutoPressPDF is a command-line tool designed to optimize, split, and auto-fix la
 autopresspdf optimize --input input.pdf --output optimized.pdf
 
 # Split a PDF file
-autopresspdf split --input input.pdf --output-dir splits/ --max-size 4000000
+autopresspdf split --input input.pdf --output-dir splits/ --max-size 10
 
 # Auto-fix a PDF file
-autopresspdf autofix --input input.pdf --output-dir autofix/ --max-size 4000000
+autopresspdf autofix --input input.pdf --output-dir autofix/ --max-size 10
 ```
 
 
