@@ -1,6 +1,5 @@
 import typer
 from pathlib import Path
-from src.data_types import PdfFile
 from src.presser import run_ghostscript, split_pdf, autofix_pdf
 
 app = typer.Typer()
@@ -31,12 +30,16 @@ def split(
     input_pdf: Path,
     output_dir: Path = typer.Option(..., help="Directory for splitted PDFs"),
     max_size: float = typer.Option(..., help="Maximum file size in MB"),
+    verbose: bool = verbose_option,
 ) -> None:
     """
     Split the PDF into parts, ensuring each part is under the size limit.
     """
     max_size_bytes = int(max_size * 1e6)  # Convert MB to bytes
-    split_pdf(input_pdf, output_dir, max_size_bytes)
+    output_pdfs = split_pdf(input_pdf, output_dir, max_size_bytes)
+    for i, part in enumerate(output_pdfs):
+        if verbose:
+            typer.echo(part)
 
 
 @app.command()
@@ -44,12 +47,16 @@ def autofix(
     input_pdf: Path,
     output_dir: Path = typer.Option(..., help="Directory for autofixed PDFs"),
     max_size: float = typer.Option(..., help="Maximum file size in MB"),
+    verbose: bool = verbose_option,
 ) -> None:
     """
     Automatically optimize and split the PDF to fit under the size limit.
     """
     max_size_bytes = int(max_size * 1e6)  # Convert MB to bytes
-    autofix_pdf(input_pdf, output_dir, max_size_bytes)
+    parts = autofix_pdf(input_pdf, output_dir, max_size_bytes)
+    for i, part in enumerate(parts):
+        if verbose:
+            typer.echo(part)
 
 
 if __name__ == "__main__":
