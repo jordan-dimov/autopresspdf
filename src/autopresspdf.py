@@ -35,6 +35,7 @@ def split(
     """
     Split the PDF into parts, ensuring each part is under the size limit.
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
     max_size_bytes = int(max_size * 1e6)  # Convert MB to bytes
     output_pdfs = split_pdf(input_pdf, output_dir, max_size_bytes)
     for i, part in enumerate(output_pdfs):
@@ -52,6 +53,7 @@ def autofix(
     """
     Automatically optimize and split the PDF to fit under the size limit.
     """
+    output_dir.mkdir(parents=True, exist_ok=True)
     max_size_bytes = int(max_size * 1e6)  # Convert MB to bytes
     parts = autofix_pdf(input_pdf, output_dir, max_size_bytes)
     for i, part in enumerate(parts):

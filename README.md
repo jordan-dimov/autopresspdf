@@ -25,6 +25,7 @@ autopresspdf split --input input.pdf --output-dir splits/ --max-size 10
 autopresspdf autofix --input input.pdf --output-dir autofix/ --max-size 10
 ```
 
+You can add the `-v` flag to ask the tool to output information about the saved files. 
 
 ## Installation
 
