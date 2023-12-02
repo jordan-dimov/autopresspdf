@@ -48,18 +48,18 @@ if __name__ == "__main__":
             print(f"Thank you for using AutoPressPDF!")
             break
         elif event == "-FIN-":
-            file_path = values["-FIN-"]
-            print(file_path)
+            pass
         elif event == "-OUTFOLD-":
-            out_folder = values["-OUTFOLD-"]
-            print(out_folder)
+            pass
         elif event == "-OK-":
+            window['-OK-'].update(disabled=True)
             file_path = values["-FIN-"]
             out_folder = values["-OUTFOLD-"]
             print(f"Processing '{file_path}' into: {out_folder}")
             parts = autofix(Path(file_path), Path(out_folder), float(values["-MAXSIZE-"]))
-            for i, part in enumerate(parts):
-                print(part)
+            info_text = f"Output {len(parts)} parts of {parts[0].size / 1e6:.2f} MB, each with {parts[0].num_pages} pages. Location: {parts[0].path}"
+            window['-OK-'].update(disabled=False)
+            sg.popup(info_text, title="Optimised PDF", keep_on_top=True)
 
     window.close()
 
